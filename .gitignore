@@ -1,0 +1,11 @@
+# dependencies
+node_modules
+
+# System
+.DS_Store
+
+# Dist
+dist
+
+# Build
+build
