@@ -34,7 +34,7 @@ const sleep = time => new Promise(resolve => {
         var links = []
 
         if(items.length >=1 ){
-        items.each((index,item)=>{
+        items.each((index,item) => {
         let it = $(item)
         let doubanId = it.find('div').data('id')
         let title = it.find('.title').text()
