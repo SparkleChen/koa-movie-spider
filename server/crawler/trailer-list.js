@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer')
-const url = `https://movie.douban.com/tag/#/?sort=T&range=7,10&tags=`
+const url = `https://movie.douban.com/tag/#/?sort=T&range=9,10&tags=&start=0`
 
 const sleep = time => new Promise(resolve => {
     setTimeout(resolve,time)
@@ -9,7 +9,8 @@ const sleep = time => new Promise(resolve => {
     console.log('Start')
     const browser =  await puppeteer.launch({
         args:['--no-sandbox'],
-        dumpio:false
+        dumpio:false,
+        headless:false
     })
 
     const page = await browser.newPage(url)
@@ -22,10 +23,10 @@ const sleep = time => new Promise(resolve => {
     
     await page.waitForSelector('.more')
 
-    for(let i = 0; i<1; i++){
-        await sleep(3000)
-        await page.click('.more')       
-    }
+     for(let i = 0; i<1; i++){ 
+         await page.click('.more')  
+         await sleep(3000)     
+     }
 
     const result = await page.evaluate(() => {
         var $ = window.$
@@ -51,5 +52,6 @@ const sleep = time => new Promise(resolve => {
     return links
     })
     browser.close()
-    console.log(result)
+    process.send({result})
+    process.exit(0)
 })()
