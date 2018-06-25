@@ -1,21 +1,34 @@
 const Koa = require('koa')
-const app = new Koa()
-const mongoose = require ('mongoose')
+const {resolve} = require ('path')
+//const mongoose = require ('mongoose')
 const { connect,initSchames } = require ('./database/init')
+const R = require('ramda')
+const MIDDLEWARES = ['router']
 
+const useMiddlewares = app =>{
+    R.map(
+        R.compose(
+            R.forEachObjIndexed(
+                initWith => initWith(app)
+            ),
+            require,
+            name => resolve(__dirname,`./middlewares/${name}`)
+        )
+    )(MIDDLEWARES)
+}
 //链接数据库
 ;(async () => {
    await connect()
    initSchames()
    //require('./task/movie')
    //require('./task/api')
+
+   const app = new Koa()
+   await useMiddlewares(app) 
+   app.listen(3003)
 })()
 
 
-app.use(async (ctx,next) => {
-    ctx.body = '电影首页'
-})
-app.listen(3003)
 
 
 
