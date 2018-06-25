@@ -8,7 +8,7 @@ const categorySchema = new Schema({
         type:String
     },
     movies:[{
-        type:ObjectId,
+        type:ObjectId,     //参考movies集合
         ref:'Movie'
     }],
     meta:{

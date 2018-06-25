@@ -9,7 +9,7 @@ const movieSchema = Schema({
     },  
     category:[{
         type:ObjectId,
-        ref:'Category'
+        ref:'Category'      //参考categories集合
     }],
     rate:Number,
     title:String,

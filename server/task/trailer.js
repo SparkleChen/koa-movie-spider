@@ -1,7 +1,7 @@
 const cp = require('child_process')
 const { resolve } = require('path')
 
-
+// api调用 开启子进程
 ;(async () => {
     const srcipt = resolve(__dirname,'../crawler/video')
     const child = cp.fork(srcipt,[])
@@ -19,7 +19,7 @@ const { resolve } = require('path')
         console.log(code)
     })
 
-    child.on('message', data => {          
+    child.on('message', data => {     
         console.log(data)
     })
 })()

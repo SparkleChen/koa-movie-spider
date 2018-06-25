@@ -1,6 +1,7 @@
+// 爬取详情页视频，海报
 const puppeteer = require('puppeteer')
 const base = `https://movie.douban.com/subject/`
-const doubanId = '26739551'
+const doubanId = '1292052'
 
 const sleep = time => new Promise(resolve => {
     setTimeout(resolve,time)
@@ -54,6 +55,6 @@ const sleep = time => new Promise(resolve => {
         cover:result.cover
     }
      browser.close()
-     process.send(data)
+     process.send(data) //子进程数据交付
      process.exit(0)
 })()

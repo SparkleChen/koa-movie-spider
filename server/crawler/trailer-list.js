@@ -4,7 +4,7 @@ const url = `https://movie.douban.com/tag/#/?sort=T&range=9,10&tags=&start=0`
 const sleep = time => new Promise(resolve => {
     setTimeout(resolve,time)
 })
-
+//爬取DOM结构
 ;(async () => {
     console.log('Start')
     const browser =  await puppeteer.launch({
@@ -52,6 +52,6 @@ const sleep = time => new Promise(resolve => {
     return links
     })
     browser.close()
-    process.send({result})
+    process.send({result})  //子进程数据交付
     process.exit(0)
 })()
