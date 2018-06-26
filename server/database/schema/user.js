@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const Schema = mongoose.Schema
-const Mixed = Schema.Types.Mixed
+//const Mixed = Schema.Types.Mixed
 
 const SALT_WORK_FACTOR = 10 
 const MAX_LOGIN_ATTEMPTS = 5 

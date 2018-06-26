@@ -3,7 +3,7 @@ const {resolve} = require ('path')
 //const mongoose = require ('mongoose')
 const { connect,initSchames } = require ('./database/init')
 const R = require('ramda')
-const MIDDLEWARES = ['router']
+const MIDDLEWARES = ['router','parcel']
 
 const useMiddlewares = app =>{
     R.map(
