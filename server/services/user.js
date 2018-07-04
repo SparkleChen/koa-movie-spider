@@ -4,10 +4,10 @@ const User = mongoose.model('User')
 export const checkPassword  = async (email,password) => {
     let match = false
     const user = await User.findOne({email})
-
     if(user){
-        match = await User.comparePassword(password,user.password)
+        match = await user.comparePassword(password,user.password)
     }
+    console.log(match)
     return {
         match,
         user

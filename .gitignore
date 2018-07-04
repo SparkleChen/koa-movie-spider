@@ -11,3 +11,8 @@ dist
 build
 
 .cache
+
+.vscode
+
+#qiniu config
+config

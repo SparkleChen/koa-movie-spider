@@ -1,18 +1,15 @@
-//const Router = require('koa-router')
-//const mongoose = require ('mongoose')
-
-//const router = new Router()
-const {controller,get,post,put } = require('../lib/decorator')
+const {controller,get} = require('../lib/decorator')
 const {getAllMovies,getMovieDetail,getRelativeMovies}  = require('../services/movie')
 
 @controller('api/v0/movies')
-export class movieController{
+export class MovieController{
    @get('/')
    async getMovies (ctx,next ){      
        const { type, year } = ctx.query
        const movies = await getAllMovies(type,year)
        ctx.body = {
-           movies
+           data:movies,
+           success:true
        }
    }
 

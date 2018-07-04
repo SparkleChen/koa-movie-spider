@@ -25,6 +25,10 @@ const userSchema = new Schema({
         required:true,
         default:0
     },
+    role:{
+        type:String,
+        default:'user'
+    },
     lockUntil:Number,
     meta:{
         createdAt:{
@@ -60,20 +64,19 @@ userSchema.pre('save', function(next) {
             this.password = hash
             next()
         })
-    })
-    next()   
+    }) 
 })
 
 userSchema.methods = {
-    comparePassword:(_password,password) => {
+    comparePassword:function (_password,password){
         return new Promise((resolve,reject) => {
-            bcrypt.compare(_password,password,(err,isMatch) => {
+            bcrypt.compare(_password,password,function(err,isMatch){
              if(!err) resolve(isMatch)
              else reject(err)
             })
         })
     },
-    incLoginAttempts: (user) =>{
+    incLoginAttempts: function (user) {
         return new Promise((resolve,reject)=>{
             if(this.lockUntil && this.lockUntil < Date.now()){
                 this.update({

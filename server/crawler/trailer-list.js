@@ -23,7 +23,7 @@ const sleep = time => new Promise(resolve => {
     
     await page.waitForSelector('.more')
 
-     for(let i = 0; i<1; i++){ 
+     for(let i = 0; i<1 ;i++){ 
          await page.click('.more')  
          await sleep(3000)     
      }
