@@ -2,10 +2,16 @@ import React ,{ Component } from 'react'
 import { Menu, Spin } from 'antd'
 import navRoutes from '../nav'
 
+// const getMenuContent = ({path,name}) => (
+//     <a href={path ? path : '/'} style={{color:'#fff2e8'}}>
+//         {name}
+//     </a>
+// )
+
 const getMenuContent = ({path,name}) => (
-    <a href={path ? path : '/'} style={{color:'#fff2e8'}}>
+   <a href='#' style={{ color:'#fff2e8' }}>
         {name}
-    </a>
+   </a>
 )
 
 export  default class LayoutDefault extends Component {
@@ -34,6 +40,9 @@ export  default class LayoutDefault extends Component {
            loading:status
        })
    }
+   _getSelectedTypeMovies (items){
+      this.props._getSelectedTypeMovies(items)
+   }
    render(){
     const { children } = this.props
     const { loading,tip } = this.state
@@ -43,6 +52,7 @@ export  default class LayoutDefault extends Component {
                 style={{fontSize:13.5,backgroundColor:'#000'}} 
                 mode='horizontal'
                 defaultSelectedKeys={[this.matchRouteName]}
+                onClick={ (params) => this._getSelectedTypeMovies(params)}
             >
            <Menu.Item 
            style={{

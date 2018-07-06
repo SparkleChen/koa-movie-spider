@@ -5,7 +5,7 @@ export default [
     },
     {
         name:'科幻',
-        path:`/list/${encodeURIComponent('科幻')}`
+        path:`/list?type=${encodeURIComponent('科幻')}`
     },
     {
         name:'惊悚',

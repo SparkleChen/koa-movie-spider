@@ -12,11 +12,9 @@ export class MovieController{
            success:true
        }
    }
-
    @get('/:id')
    async getMovieDetail (ctx,next ){      
        const id = ctx.params.id
-       console.log(id)
        const movie = await getMovieDetail(id)
        const relativeMovies = await getRelativeMovies(movie)
 
