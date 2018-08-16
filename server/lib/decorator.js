@@ -84,6 +84,10 @@ const changeToArr = R.unless(
     R.of
   )
 
+/**
+ * 将装饰函数和被装饰函数以数组形式同时塞入到路由中处理，即可把普通函数作为中间件函数
+ * @param {*} middleware 
+ */
 export const convert = middleware => (target, key, descriptor) => {
     target[key] = R.compose(
       R.concat(

@@ -26,7 +26,6 @@ export class AdminController{
               err:'用户不存在'
           })
        }
-
        if(matchData.match){
            ctx.session.user = {
                _id : matchData.user._id,
